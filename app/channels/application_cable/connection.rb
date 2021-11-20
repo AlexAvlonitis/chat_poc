@@ -9,11 +9,15 @@ module ApplicationCable
     private
 
     def find_verified_user
-      if verified_user = User.find_by(id: cookies.encrypted[:user_id])
+      if verified_user = User.find_by(id: cookie_user_id)
         verified_user
       else
         reject_unauthorized_connection
       end
+    end
+
+    def cookie_user_id
+      cookies.encrypted['_chat_poc_session']['warden.user.user.key']&.first
     end
   end
 end

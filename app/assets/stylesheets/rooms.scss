@@ -1,3 +1,24 @@
-// Place all the styles related to the Rooms controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.container {
+  background-color: #f1f1f1;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 3rem;
+}
+
+.container form {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+
+  input {
+    border: 2px solid #000;
+    font-size: large;
+    height: 3rem;
+    margin: 1rem;
+    padding: 1rem;
+  }
+}

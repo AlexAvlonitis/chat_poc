@@ -1,5 +1,8 @@
 class RoomsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @rooms = Room.all
+    @message = Message.new
+    @messages = room.messages
   end
 end
