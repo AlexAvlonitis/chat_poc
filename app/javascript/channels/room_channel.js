@@ -2,7 +2,6 @@ import consumer from "./consumer"
 
 consumer.subscriptions.create('RoomChannel', {
   received(data) {
-    console.log(data)
     this.appendLine(data)
   },
 
