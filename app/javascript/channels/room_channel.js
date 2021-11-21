@@ -15,7 +15,7 @@ consumer.subscriptions.create('RoomChannel', {
     return `
       <p>
         <strong>${data["current_user"]["name"]}</strong>
-        <span class="time"><small>(${data['message']['created_at']}): </small></span>
+        <span class="time"><small>(${data['message']['short_date']}): </small></span>
         <span class="message">${data['message']['content']}</span>
       </p>
     `
