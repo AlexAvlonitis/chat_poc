@@ -1,24 +1,41 @@
-# README
+# CHAT POC
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Chat prototype, using action cable.
 
-Things you may want to cover:
+Created Unit tests, but not integration, acceptance tests.
 
-* Ruby version
+The chat DB schema includes a: room -> messages <- user, on a sqlite DB.
 
-* System dependencies
+The user authentication uses the devise gem but not the confirmable feature in order to validate the email. Authenticated users can only access the chat pages.
 
-* Configuration
+Minimal CSS has been implemented.
 
-* Database creation
+For background processing I used the Rails's memory store and not persistent storage such as sidekiq with redis.
 
-* Database initialization
+For the weekly emails i created a rake task and used the whenever gem to create cronjobs in an easy way.
 
-* How to run the test suite
+Code does't have a lot of abstractions such as service objects etc... i used mostly the MVC objects since there is not a lot of code.
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+**How to run**
+```ruby
+bundle install
 
-* ...
+rails db:setup
+rails s
+# visit http://localhost:3000
+
+# Run the weekly task manually
+rake weekly:email_report
+
+# If you want to test real emails
+# Install mailcatcher gem locally https://mailcatcher.me/
+# And run the rake task again to see them live.
+
+# To set the cronjob on the machine run
+crontab -l # to list current cronjobs
+bundle exec whenever --update-crontab
+crontab -l # to see if the new one is there
+```
+
+
