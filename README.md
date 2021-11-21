@@ -25,6 +25,9 @@ rails db:setup
 rails s
 # visit http://localhost:3000
 
+# Run tests
+rspec
+
 # Run the weekly task manually
 rake weekly:email_report
 
