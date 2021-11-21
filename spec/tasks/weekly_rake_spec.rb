@@ -6,9 +6,9 @@ describe "Weekly rake task" do
   let(:user) { create(:user) }
   let(:room) { create(:room, name: Room::MAIN_ROOM_NAME) }
   let(:mailer) { double(:mailer, deliver_now: nil) }
-  let!(:message1) { create(:message, created_at: 1.week.ago.beginning_of_day - 1, room: room, user: user) }
-  let!(:message2) { create(:message, created_at: 1.week.ago.beginning_of_day, room: room, user: user) }
-  let!(:message3) { create(:message, room: room, user: user) }
+  let!(:message1) { create(:message, created_at: 1.week.ago.midday - 1, room: room, user: user) }
+  let!(:message2) { create(:message, created_at: 1.week.ago.midday, room: room, user: user) }
+  let!(:message3) { create(:message, created_at: 1.day.ago.midday, room: room, user: user) }
   let!(:message4) { create(:message, created_at: 1.year.ago, room: room, user: user) }
 
   before do

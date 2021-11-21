@@ -3,7 +3,17 @@ class Room < ApplicationRecord
 
   MAIN_ROOM_NAME = 'main_room'
 
-  def last_weeks_messages_count(from_date = 1.week.ago.beginning_of_day)
-    messages.where(created_at: from_date..DateTime.now).count
+  def last_weeks_messages_count
+    messages_at_date(1.week.ago.midday, DateTime.now.midday).count
+  end
+
+  def custom_date_range_messages_count(from:, to:)
+    messages_at_date(from, to).count
+  end
+
+  private
+
+  def messages_at_date(from, to)
+    messages.where(created_at: from..to)
   end
 end
