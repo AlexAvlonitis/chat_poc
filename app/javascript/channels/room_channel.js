@@ -9,6 +9,7 @@ consumer.subscriptions.create('RoomChannel', {
     const html = this.createLine(data)
     const element = document.querySelector("[data-chat-room='Chat']")
     element.insertAdjacentHTML("beforeend", html)
+    element.scrollTo(0, element.scrollHeight);
   },
 
   createLine(data) {

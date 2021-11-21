@@ -15,7 +15,8 @@ namespace :weekly do
         .report(user, message_total_count)
         .deliver_now
 
-      message_user_total_count = room.last_weeks_messages_count(user.last_message_date)
+      last_message_date = user.last_message_date
+      message_user_total_count = room.last_weeks_messages_count(last_message_date)
       WeeklyMessagesUserMailer
         .report(user, message_user_total_count)
         .deliver_now

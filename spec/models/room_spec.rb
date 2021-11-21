@@ -23,5 +23,11 @@ RSpec.describe Room, type: :model do
         expect(room.last_weeks_messages_count(1.day.ago)).to eq 1
       end
     end
+
+    context 'when date param is nil' do
+      it 'returns all messages until now' do
+        expect(room.last_weeks_messages_count(nil)).to eq 3
+      end
+    end
   end
 end

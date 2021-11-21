@@ -6,6 +6,11 @@
   bottom: 0;
   left: 0;
   padding: 3rem;
+
+  #messages {
+    height: 80%;
+    overflow: scroll;
+  }
 }
 
 .container form {

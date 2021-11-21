@@ -9,7 +9,7 @@ describe "Weekly rake task" do
   let!(:message1) { create(:message, created_at: 1.week.ago.beginning_of_day - 1, room: room, user: user) }
   let!(:message2) { create(:message, created_at: 1.week.ago.beginning_of_day, room: room, user: user) }
   let!(:message3) { create(:message, room: room, user: user) }
-  let!(:message4) { create(:message, created_at: 1.day.after, room: room, user: user) }
+  let!(:message4) { create(:message, created_at: 1.year.ago, room: room, user: user) }
 
   before do
     allow(WeeklyMessagesTotalMailer).to receive_message_chain(:report, :deliver_now)
@@ -23,7 +23,7 @@ describe "Weekly rake task" do
 
     expect(WeeklyMessagesUserMailer)
       .to receive(:report)
-      .with(user, 3)
+      .with(user, 4)
 
     Rake::Task["weekly:email_report"].invoke
   end
