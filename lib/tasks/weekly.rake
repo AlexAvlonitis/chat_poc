@@ -11,15 +11,13 @@ namespace :weekly do
     users = User.includes(:messages).all
 
     users.each do |user|
-      puts 'Sending Total Weekly Messsages ...'
       WeeklyMessagesTotalMailer
-        .report(user: user, messages_total: message_total_count)
+        .report(user, message_total_count)
         .deliver_now
 
-      puts 'Sending User Total Weekly Messsages ...'
       message_user_total_count = room.last_weeks_messages_count(user.last_message_date)
       WeeklyMessagesUserMailer
-        .report(user: user, messages_user: message_user_total_count)
+        .report(user, message_user_total_count)
         .deliver_now
     end
   end
