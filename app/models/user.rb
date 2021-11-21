@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :messages, dependent: :destroy
+
+  def last_message_date
+    messages.last&.created_at
+  end
 end
