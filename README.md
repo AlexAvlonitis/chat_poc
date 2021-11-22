@@ -23,6 +23,7 @@ bundle install
 
 rails db:setup
 rails s
+# requires node on the local machine for the webpacker to run
 # visit http://localhost:3000
 
 # Run tests
